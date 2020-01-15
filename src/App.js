@@ -1,26 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { createContext, useState } from 'react';
+import './styles.css';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import Home from './components/home/home.component.jsx';
+import Success from './components/success/success.component';
 
-function App() {
+export const Context = createContext();
+
+export const App = () => {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const userContext = {
+    username: [username, setUsername],
+    password: [password, setPassword]
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Context.Provider value={userContext}>
+      <Router>
+        <div>
+          <Switch>
+            <Route exact path='/'>
+              <Home />
+            </Route>
+            <Route exact path='/success'>
+              <Success />
+            </Route>
+          </Switch>
+        </div>
+      </Router>
+    </Context.Provider>
   );
-}
-
-export default App;
+};
