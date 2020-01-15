@@ -1,4 +1,8 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# HBRS Aufgabe Webdevelopment guest lecture 2020
+
+## Simple React login using Context API with Hooks
+
+Starting Point was: https://codesandbox.io/s/awesome-bhabha-9tsuv
 
 ## Available Scripts
 
